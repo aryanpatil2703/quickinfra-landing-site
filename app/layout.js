@@ -2,6 +2,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import ThemeProvider from "./components/ThemeProvider";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import QuickInfraChatbot from "@/app/components/chatbot/QuickInfraChatbot";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <QuickInfraChatbot />
         </ThemeProvider>
       </body>
     </html>

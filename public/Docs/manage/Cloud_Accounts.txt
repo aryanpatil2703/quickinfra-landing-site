@@ -1,0 +1,134 @@
+TITLE: Cloud Accounts (QuickInfra)
+
+CATEGORY: Manage
+
+DESCRIPTION:
+Cloud Accounts are the foundational entry point in QuickInfra. All infrastructure, deployments, and pipelines are tied to a cloud account. Without a cloud account, no operations can be performed.
+
+---
+
+WHAT IS A CLOUD ACCOUNT?
+
+A Cloud Account is a secure connection between QuickInfra and a cloud provider.
+
+Currently supported:
+- AWS
+
+Planned support:
+- Azure
+- Google Cloud Platform (GCP)
+
+Purpose:
+- allows QuickInfra to provision and manage infrastructure
+- links all resources to a specific account
+
+All resources (VMs, networks, pipelines, deployments) are created under the selected cloud account.
+
+---
+
+KEY CONCEPT
+
+- Every operation in QuickInfra requires a cloud account
+- Multiple accounts can be added
+- Common setup:
+  - dev account
+  - staging account
+  - production account
+
+You can switch accounts per resource or deployment.
+
+---
+
+HOW TO ADD A CLOUD ACCOUNT
+
+Step 1: Navigate
+- Go to Manage → Cloud Accounts
+- Click "New"
+
+Step 2: Basic Information
+- Account ID / Subscription ID (min 12 characters)
+- Account Description (e.g., "AWS Production - ap-south-1")
+- Cloud Provider (e.g., AWS)
+- Status = Active
+
+Step 3: Default Region
+- Select default region
+- Used automatically for resource creation
+- Can be overridden later
+
+Step 4: Credentials
+- Access Key
+- Secret Key
+- Generated from cloud provider (e.g., AWS IAM)
+- Minimum 20 characters
+
+Step 5: Advanced Configuration (Optional)
+- Assume Role ARN (for cross-account access)
+- External ID
+- MFA Token
+
+Step 6: Create Account
+- Click "Create Account"
+- QuickInfra validates credentials
+- Account appears in list
+
+---
+
+SECURITY NOTES
+
+- Credentials are encrypted at rest
+- Keys are never shown again after saving
+- Never share Access Key or Secret Key
+
+---
+
+SWITCHING INFRASTRUCTURE BETWEEN ACCOUNTS
+
+QuickInfra allows moving infrastructure between accounts:
+
+- migrate workloads (e.g., dev → production)
+- no need to recreate infrastructure
+- simply select a different account during transfer
+
+---
+
+KEY FEATURES
+
+- Multi-account support
+- Environment separation (dev, staging, prod)
+- Secure credential storage
+- Default region configuration
+- Easy switching between accounts
+
+---
+
+IMPORTANT NOTES
+
+- Account must be ACTIVE to use it
+- You can add multiple accounts
+- Default region is only a fallback
+- Deleting an account:
+  - does NOT delete infrastructure
+  - only removes connection from QuickInfra
+
+---
+
+BEST PRACTICES
+
+- Use separate accounts for each environment
+- Use clear naming:
+  - "AWS Dev - us-east-1"
+  - "AWS Prod - ap-south-1"
+- Secure credentials properly
+- Use IAM roles for production setups
+
+---
+
+SUMMARY
+
+Cloud Accounts enable QuickInfra to:
+- connect to cloud providers
+- provision and manage infrastructure
+- organize environments across multiple accounts
+
+They are the starting point for all operations in the platform.

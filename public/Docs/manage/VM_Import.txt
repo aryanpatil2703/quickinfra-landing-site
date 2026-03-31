@@ -1,0 +1,139 @@
+TITLE: VM Import (QuickInfra)
+
+CATEGORY: Manage
+
+DESCRIPTION:
+VM Import allows users to import virtual machine images stored in S3 into their cloud account as usable AMIs. It enables cross-account and cross-cloud migration by converting external VM images into deployable infrastructure.
+
+---
+
+WHAT IS VM IMPORT?
+
+VM Import is used to convert VM images stored in S3 into Amazon Machine Images (AMIs).
+
+It works as:
+- the reverse process of VM Export
+- a migration tool for moving workloads across environments
+
+Supports:
+- images exported from QuickInfra
+- manually uploaded VM images
+
+---
+
+KEY CONCEPT
+
+- VM images are stored in S3
+- VM Import converts them into AMIs
+- Imported AMIs can be used to launch instances
+
+This enables:
+- workload migration across accounts
+- portability across cloud environments
+
+---
+
+SUPPORTED IMAGE FORMATS
+
+- VMDK (VMware)
+- VHD / VHDX (Microsoft / Hyper-V)
+- OVA (portable format)
+
+---
+
+HOW VM IMPORT WORKS
+
+Step 1: Navigate
+- Go to Manage → VM Import
+
+Step 2: Select Target
+- Choose:
+  - Cloud Provider
+  - Cloud Account
+  - Region
+- This is where AMI will be created
+
+Step 3: Browse S3 Images
+- Enter S3 bucket name
+- Optional: folder prefix (e.g., vms/prod/)
+- Select format or use "All Formats"
+- Click "Fetch Images"
+
+Step 4: Select Image
+- Choose desired VM image
+- Move to Import VM tab
+
+Step 5: Configure Import
+- Set:
+  - OS type
+  - architecture
+- Submit import job
+
+Step 6: Track Status
+- Use "Import Status" tab
+- Monitor progress
+
+Step 7: Completion
+- Imported image appears in:
+  - VM Images section
+- Ready for deployment
+
+---
+
+KEY FEATURES
+
+- Import VM images from S3
+- Convert to deployable AMIs
+- Cross-account and cross-region migration
+- Supports multiple image formats
+- Real-time import tracking
+
+---
+
+IMPORTANT NOTES
+
+- S3 bucket must be accessible to target account
+- Bucket should be in same region OR properly configured for cross-region access
+- Import process is asynchronous
+- Large images may take 30–60 minutes
+
+---
+
+IMPORTANT WARNINGS
+
+- Import will fail if:
+  - bucket permissions are incorrect
+  - region mismatch exists
+- Always verify:
+  - IAM roles
+  - bucket policies
+
+---
+
+KEY INSIGHTS
+
+- Imported AMI behaves like any native AMI
+- Can be used in Infrastructure Projects
+- Enables full environment migration without reconfiguration
+
+---
+
+BEST PRACTICES
+
+- Use QuickInfra export + import together for migration
+- Organize S3 with clear folder structure
+- Validate image format before importing
+- Plan imports for large images in advance
+- Monitor import status for errors
+
+---
+
+SUMMARY
+
+VM Import enables users to:
+- migrate virtual machines across environments
+- convert external VM images into AMIs
+- reuse existing infrastructure setups
+- deploy imported images using QuickInfra
+
+It provides a seamless bridge between storage (S3) and compute (VM Instances).

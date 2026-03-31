@@ -1,0 +1,139 @@
+TITLE: VM Export (QuickInfra)
+
+CATEGORY: Manage
+
+DESCRIPTION:
+VM Export allows users to export an AMI from their cloud account into an S3 bucket as a portable virtual machine image. It enables cross-cloud migration, backup, and provider-independent storage of machine images.
+
+---
+
+WHAT IS VM EXPORT?
+
+VM Export converts an existing AMI into a standalone virtual machine image file stored in S3.
+
+It is:
+- the first step in the migration pipeline
+- used for backup and portability
+
+Works with:
+- any AMI in your cloud account
+
+---
+
+KEY CONCEPT
+
+- AMI → exported to S3 as image file
+- S3 acts as portable storage layer
+- Exported image can be:
+  - re-imported into AWS
+  - moved to other cloud providers
+
+---
+
+SUPPORTED IMAGE FORMATS
+
+- VMDK (recommended, most compatible)
+- VHD
+- OVA
+
+---
+
+HOW VM EXPORT WORKS
+
+Step 1: Navigate
+- Go to Manage → VM Export
+
+Step 2: Select Source
+- Choose:
+  - Cloud Provider
+  - Cloud Account
+  - Region
+- This is where the AMI exists
+
+Step 3: Enter Image ID
+- Provide AMI ID (e.g., ami-xxxxxxx)
+- Found in VM Images section
+
+Step 4: Configure S3 Destination
+- Enter S3 bucket name
+- Optional: folder prefix (e.g., exports/ or migrations/prod/)
+- Bucket must be:
+  - in same region
+  - accessible to export service
+
+Step 5: Select Format
+- Choose image format
+- Default: VMDK (recommended)
+
+Step 6: Configure Role and Tags
+- IAM Role (default: vmimport)
+- Optional description and tags
+
+Step 7: Export
+- Submit export job
+- Runs asynchronously
+
+Step 8: Completion
+- Image file stored in S3
+- Ready for import or external use
+
+---
+
+KEY FEATURES
+
+- Export AMIs to portable formats
+- Store images in S3
+- Cross-account and cross-cloud migration support
+- Backup and archival capability
+- Supports multiple formats
+
+---
+
+IMPORTANT NOTES
+
+- S3 bucket must:
+  - be in same region
+  - allow write access
+- Export process is asynchronous
+- Large images may take 30–90 minutes
+
+---
+
+IMPORTANT WARNINGS
+
+- Export fails if:
+  - IAM role not configured
+  - bucket permissions incorrect
+- Ensure:
+  - vmimport role exists
+  - proper bucket policies are set
+
+---
+
+KEY INSIGHTS
+
+- Export + Import = full migration pipeline
+- S3 acts as neutral storage layer
+- Exported image is independent of cloud provider
+
+---
+
+BEST PRACTICES
+
+- Use consistent S3 folder structure (e.g., exports/YYYY-MM/)
+- Clean up old exports to reduce storage cost
+- Use VMDK for maximum compatibility
+- Verify IAM role setup before exporting
+- Plan large exports in advance
+
+---
+
+SUMMARY
+
+VM Export enables users to:
+- back up machine images
+- migrate workloads across environments
+- store images independently of cloud providers
+- prepare images for import into other accounts or platforms
+
+It forms the first step in QuickInfra’s migration workflow, working together with VM Import.

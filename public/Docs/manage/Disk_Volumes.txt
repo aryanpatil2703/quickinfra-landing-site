@@ -1,0 +1,155 @@
+TITLE: Disk Volumes (QuickInfra)
+
+CATEGORY: Manage
+
+DESCRIPTION:
+Disk Volumes provides a centralized interface to manage persistent storage (EBS volumes) across cloud accounts. Users can create, modify, attach, detach, snapshot, encrypt, and delete volumes without accessing the cloud provider console.
+
+---
+
+WHAT ARE DISK VOLUMES?
+
+Disk Volumes represent persistent storage attached to virtual machines.
+
+Capabilities:
+- manage storage lifecycle
+- attach/detach volumes to instances
+- resize and modify storage
+- create backups using snapshots
+
+It acts as:
+- the storage management layer of QuickInfra
+
+---
+
+KEY CONCEPT
+
+- Volumes are tied to cloud accounts and regions
+- Used by VM Instances for storage
+- Managed independently from compute resources
+
+---
+
+HOW TO MANAGE VOLUMES
+
+Step 1: Navigate
+- Go to Manage → Disk Volumes
+
+Step 2: Select Filters
+- Cloud Provider
+- Cloud Account
+- Region
+
+Step 3: Fetch Volumes
+- Retrieve real-time volume data
+
+Step 4: Select Volume
+Each volume shows:
+- Name
+- ID
+- Size
+- Type
+- State
+- Attached Instance (if any)
+
+Step 5: Perform Actions
+- Choose action from dropdown
+- Configure parameters
+- Click Execute
+
+---
+
+AVAILABLE ACTIONS
+
+1. Create New Volume
+- Define:
+  - size
+  - type
+  - availability zone
+  - encryption
+- Optional: enable Multi-Attach
+
+2. Modify Volume
+- Resize storage
+- Change volume type
+- No need to detach volume
+
+3. Delete Volume
+- Permanently deletes volume
+- Must be detached before deletion
+
+4. Attach Volume
+- Connect volume to instance
+- Specify device path
+
+5. Detach Volume
+- Safely remove from instance
+- Data remains intact
+
+6. Snapshot Volume
+- Create point-in-time backup
+- Used for recovery or cloning
+
+---
+
+ENCRYPTION
+
+- Enable encryption during creation
+- Optionally provide KMS Key ARN
+- Default AWS-managed key used if none provided
+
+Benefits:
+- protects data at rest
+- secures data transfer between volume and instance
+
+---
+
+KEY FEATURES
+
+- Centralized storage management
+- Multi-account and multi-region support
+- Real-time data synchronization
+- Full lifecycle control (create → delete)
+- Snapshot-based backup system
+
+---
+
+IMPORTANT WARNINGS
+
+- Deleting a volume is irreversible
+- Always create snapshot before deletion
+- Volume must be detached before deleting
+
+---
+
+KEY NOTES
+
+- Volume must be in same availability zone as instance
+- Resize changes may require filesystem expansion inside OS
+- Snapshots are incremental (cost-efficient)
+- Multi-Attach only supported for:
+  - io1
+  - io2
+- "Delete on Termination" removes volume when instance is terminated
+
+---
+
+BEST PRACTICES
+
+- Use snapshots before risky operations
+- Tag volumes for cost tracking
+- Resize volumes proactively based on usage
+- Use encryption for sensitive data
+- Verify AZ compatibility before attaching
+
+---
+
+SUMMARY
+
+Disk Volumes enables users to:
+- manage storage independently from compute
+- perform lifecycle operations easily
+- back up and restore data using snapshots
+- securely manage persistent storage
+
+It completes the infrastructure management layer alongside VM Instances.

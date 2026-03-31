@@ -1,0 +1,108 @@
+TITLE: User Profile (QuickInfra)
+
+CATEGORY: Users
+
+DESCRIPTION:
+User Profile allows users to manage their personal account information and security settings. Users can update their name, email, locale, and enable or disable Multi-Factor Authentication (MFA).
+
+---
+
+WHAT IS USER PROFILE?
+
+User Profile is:
+- a user-specific settings page
+- accessible only to the logged-in user
+
+It allows users to:
+- manage personal information
+- control account security settings
+
+---
+
+PERSONAL INFORMATION
+
+Users can update:
+
+- First Name
+- Last Name
+- Email Address
+- Locale (controls UI language)
+
+Fixed field:
+- Username → cannot be changed after account creation
+
+Changes take effect immediately after saving.
+
+---
+
+MULTI-FACTOR AUTHENTICATION (MFA)
+
+MFA adds an extra layer of security during login.
+
+How it works:
+- Enable MFA toggle
+- QR code is generated
+- Scan using authenticator apps:
+  - Google Authenticator
+  - Authy
+- Enter 6-digit verification code
+
+Once enabled:
+- login requires:
+  - password
+  - MFA code
+
+---
+
+KEY FEATURES
+
+- User-level account management
+- Editable personal information
+- Built-in MFA support
+- No admin required for updates
+- Immediate changes on save
+
+---
+
+IMPORTANT NOTES
+
+- MFA is managed per user
+- Each user controls their own security settings
+- Username cannot be modified after creation
+
+---
+
+IMPORTANT WARNINGS
+
+- Losing access to MFA device:
+  - requires admin intervention
+  - no self-recovery available
+
+---
+
+KEY INSIGHTS
+
+- MFA significantly improves account security
+- Recommended for admin and production users
+- Locale setting improves usability
+
+---
+
+BEST PRACTICES
+
+- Enable MFA for all users
+- Keep email updated for notifications
+- Choose username carefully during account creation
+- Use secure authenticator apps
+
+---
+
+SUMMARY
+
+User Profile enables users to:
+- manage personal account details
+- configure security settings
+- protect accounts using MFA
+- personalize their QuickInfra experience
+
+It provides a secure and user-controlled account management interface.

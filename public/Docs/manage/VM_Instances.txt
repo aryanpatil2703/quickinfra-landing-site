@@ -1,0 +1,133 @@
+TITLE: VM Instances (QuickInfra)
+
+CATEGORY: Manage
+
+DESCRIPTION:
+VM Instances provides a centralized dashboard to view and manage all virtual machines across cloud accounts, regions, and providers. Users can perform lifecycle operations such as start, stop, reboot, delete, and manage storage without accessing the cloud provider console.
+
+---
+
+WHAT IS VM INSTANCES?
+
+VM Instances is a unified interface for managing virtual machines across multiple cloud environments.
+
+Capabilities:
+- view all VMs in one place
+- filter by provider, account, region
+- perform actions without using cloud console
+
+It acts as:
+- a control layer over existing infrastructure
+- NOT a provisioning tool
+
+---
+
+KEY CONCEPT
+
+- VM Instances manages already existing VMs
+- Does NOT create new VMs
+- Use Infrastructure Projects to provision new instances
+
+---
+
+HOW TO VIEW INSTANCES
+
+Step 1: Navigate
+- Go to Manage → VM Instances
+
+Step 2: Select Filters
+- Cloud Provider (currently AWS)
+- Cloud Account
+- Region
+- Optional: Project filter
+
+Step 3: Fetch Instances
+- Click "Fetch Instances"
+- QuickInfra queries cloud provider in real time
+- Uses Assume Role ARN automatically if configured
+
+Step 4: Review Data
+Each VM shows:
+- Name
+- ID
+- Instance Type
+- Public IP
+- Private IP
+- State (Running, Stopped, etc.)
+
+---
+
+SUPPORTED OPERATIONS
+
+1. Start / Stop
+- Power on/off instance
+- Useful for cost optimization
+
+2. Reboot
+- Restart instance
+- Keeps data intact
+
+3. Delete (Terminate)
+- Permanently deletes VM
+- Irreversible action
+
+4. Create AMI Backup
+- Creates snapshot of instance
+- Stored in cloud account
+- Accessible in VM Images
+
+5. View Associated Volumes
+- Lists attached storage volumes
+- Shows size, type, and state
+
+6. Update Volumes
+- Modify volume size or type
+- No need to open separate storage UI
+
+---
+
+ADDITIONAL FEATURES
+
+- Bulk tag updates for spot instances
+- Centralized management across accounts
+- Real-time data fetching
+- Multi-region support
+
+---
+
+IMPORTANT WARNINGS
+
+- Delete action permanently removes VM
+- Always create backup before deleting production instances
+
+---
+
+KEY NOTES
+
+- Data is fetched live from cloud provider
+- Always reflects real-time infrastructure state
+- Stopped instances still incur storage costs
+- AMI backups appear in:
+  - cloud provider console
+  - QuickInfra VM Images section
+
+---
+
+BEST PRACTICES
+
+- Stop unused instances to reduce cost
+- Delete only when certain resources are no longer needed
+- Use AMI backups before major changes
+- Use tags for cost tracking and organization
+
+---
+
+SUMMARY
+
+VM Instances enables users to:
+- manage virtual machines centrally
+- perform lifecycle operations easily
+- monitor infrastructure across accounts and regions
+- avoid switching between multiple cloud consoles
+
+It simplifies VM management while maintaining full control over cloud resources.

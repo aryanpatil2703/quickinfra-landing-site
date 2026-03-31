@@ -1,0 +1,128 @@
+TITLE: VM Images (QuickInfra)
+
+CATEGORY: Manage
+
+DESCRIPTION:
+VM Images provides a centralized view of all Amazon Machine Images (AMIs) across cloud accounts. Users can browse, manage, export, and delete VM images, which are typically created from VM Instances as backups or reusable base images.
+
+---
+
+WHAT ARE VM IMAGES?
+
+A VM Image (AMI) is a snapshot of a virtual machine at a specific point in time.
+
+It includes:
+- operating system
+- installed software
+- configurations
+- root volume data
+
+Purpose:
+- launch identical instances repeatedly
+- reuse pre-configured environments
+- create backups of existing VMs
+
+---
+
+KEY CONCEPT
+
+- VM Images act as a reusable template for new instances
+- Created using:
+  - VM Instances (Create AMI Backup)
+  - or directly in cloud provider
+- Managed centrally in QuickInfra
+
+---
+
+HOW TO VIEW IMAGES
+
+Step 1: Navigate
+- Go to Manage → VM Images
+
+Step 2: Select Filters
+- Cloud Provider
+- Cloud Account
+- Region
+- Optional: Project filter
+
+Step 3: Fetch Images
+- Click "Fetch Images"
+- QuickInfra queries cloud provider in real time
+- Uses Assume Role ARN automatically if configured
+
+Step 4: Review Images
+Each image displays:
+- Image Name
+- Image ID
+- Architecture (x86_64 or arm64)
+- Root Device Type (EBS or instance store)
+- Creation Date
+- State (Pending, Available)
+
+---
+
+SUPPORTED OPERATIONS
+
+1. Export to S3
+- Export AMI as portable image
+- Can be imported into:
+  - other regions
+  - other cloud providers
+- Helps avoid vendor lock-in
+
+2. Download Metadata
+- Retrieve image details
+- Useful for automation or auditing
+
+3. Delete (Deregister)
+- Removes AMI from cloud account
+- Does NOT delete underlying snapshots
+
+---
+
+IMPORTANT WARNINGS
+
+- Deleting an AMI is irreversible
+- Snapshots remain and still incur storage cost
+- Always verify if AMI is in use before deleting
+
+---
+
+KEY FEATURES
+
+- Centralized AMI management
+- Multi-account and multi-region support
+- Real-time data fetching
+- Integration with VM Instances
+- Export capability for portability
+
+---
+
+KEY NOTES
+
+- Images are fetched live from cloud provider
+- Pending images must become "Available" before use
+- AMIs created from VM Instances are auto-tagged
+- Architecture must match instance type:
+  - x86_64 ≠ ARM
+
+---
+
+BEST PRACTICES
+
+- Use AMIs for reusable infrastructure setups
+- Create backups before modifying production VMs
+- Avoid deleting AMIs used in deployments
+- Clean up unused snapshots to reduce cost
+
+---
+
+SUMMARY
+
+VM Images enables users to:
+- manage reusable machine images
+- create consistent infrastructure environments
+- back up virtual machines
+- export images across regions or providers
+
+It acts as the foundation for repeatable and scalable infrastructure deployment.

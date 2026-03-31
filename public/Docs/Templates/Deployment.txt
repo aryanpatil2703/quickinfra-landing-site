@@ -1,0 +1,117 @@
+TITLE: Deployment Templates (QuickInfra)
+
+CATEGORY: Templates
+
+DESCRIPTION:
+Deployment Templates are pre-built, production-ready Deployment Projects created and maintained by QuickInfra. Users can copy these templates into their account, configure target servers and parameters, and execute deployments without creating workflows from scratch.
+
+---
+
+WHAT ARE DEPLOYMENT TEMPLATES?
+
+Deployment Templates are:
+- fully configured Deployment Projects
+- built using predefined activities and sequences
+- designed for common deployment patterns
+
+They act as:
+- reusable blueprints for deployment workflows
+
+---
+
+KEY CONCEPT
+
+- Templates = ready-made Deployment Projects
+- Cannot be modified directly
+- Must be copied into your account before use
+
+After copying:
+- becomes a normal Deployment Project
+- fully editable and executable
+
+---
+
+WHAT TEMPLATES INCLUDE
+
+Templates may contain:
+- application deployment workflows (Java, Python, .NET)
+- database migration steps
+- configuration updates across servers
+- script execution pipelines
+- pre-defined activity sequences
+
+---
+
+HOW TO USE TEMPLATES
+
+Step 1: Navigate
+- Go to Templates → Deployment
+
+Step 2: Browse Templates
+- View:
+  - deployment pattern
+  - activity types used
+  - workflow structure
+
+Step 3: Copy Template
+- Click "Copy as Project"
+- Creates a new Deployment Project
+
+Step 4: Configure
+- Select target hosts (servers)
+- Update environment-specific values
+- Adjust activity configurations
+
+Step 5: Execute
+- Run deployment
+- Monitor execution logs
+
+---
+
+KEY FEATURES
+
+- Pre-configured deployment workflows
+- No need to build deployment logic from scratch
+- Faster onboarding and execution
+- Supports multiple platforms:
+  - Linux
+  - Windows
+- Covers common deployment patterns
+
+---
+
+IMPORTANT NOTES
+
+- Templates are read-only
+- Copied projects are independent
+- Template updates do NOT affect existing projects
+- Designed to work with infrastructure created via Infrastructure Projects
+
+---
+
+KEY INSIGHTS
+
+- Templates standardize deployment processes
+- Reduce human error in workflows
+- Ensure consistent deployments across environments
+
+---
+
+BEST PRACTICES
+
+- Review workflows before execution
+- Customize per environment
+- Test in dev before production
+- Use templates as starting points
+
+---
+
+SUMMARY
+
+Deployment Templates enable users to:
+- quickly execute standard deployment workflows
+- reuse proven deployment patterns
+- reduce manual setup effort
+- ensure consistent and reliable deployments
+
+They act as reusable blueprints for Deployment Projects.

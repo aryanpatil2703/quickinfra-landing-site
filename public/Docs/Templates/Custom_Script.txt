@@ -1,0 +1,123 @@
+TITLE: Script Templates (QuickInfra)
+
+CATEGORY: Templates
+
+DESCRIPTION:
+Script Templates are pre-built, production-ready automation scripts created and maintained by QuickInfra. Users can copy these templates into their Custom Scripts library and use them in Deployment Projects or CloudFormation Stacks.
+
+---
+
+WHAT ARE SCRIPT TEMPLATES?
+
+Script Templates are:
+- reusable automation scripts
+- equivalent to Custom Scripts
+- pre-written and tested by QuickInfra
+
+They support multiple technologies:
+- Linux Shell
+- Ansible
+- CloudFormation
+- PowerShell
+- Terraform
+
+---
+
+KEY CONCEPT
+
+- Templates = ready-made scripts
+- Cannot be modified directly
+- Must be copied into Custom Scripts before use
+
+After copying:
+- becomes a Custom Script
+- fully editable and reusable
+
+---
+
+WHAT SCRIPT TEMPLATES ARE USED FOR
+
+Script Templates can automate:
+
+- server configuration
+- software installation
+- network setup
+- database operations
+- application deployment
+- cloud resource provisioning
+
+---
+
+HOW TO USE SCRIPT TEMPLATES
+
+Step 1: Navigate
+- Go to Templates → Custom Scripts
+
+Step 2: Browse Templates
+- Filter by script type:
+  - Shell
+  - Ansible
+  - Terraform
+  - CloudFormation
+  - PowerShell
+
+Step 3: Copy Template
+- Click "Copy to My Scripts"
+- Script is added to Custom Scripts library
+
+Step 4: Customize
+- Review script content
+- Modify parameters or logic if needed
+
+Step 5: Use Script
+- Use in:
+  - Deployment Projects
+  - CloudFormation Stacks
+
+---
+
+KEY FEATURES
+
+- Pre-built automation scripts
+- Supports multiple scripting technologies
+- Ready for immediate use
+- Integrated with Custom Scripts
+- Tested and production-ready
+
+---
+
+IMPORTANT NOTES
+
+- Templates are read-only
+- Copied scripts are independent
+- Updates to templates do NOT affect your scripts
+- Scripts must be used via Deployment Projects or stacks
+
+---
+
+KEY INSIGHTS
+
+- Templates reduce need to write scripts from scratch
+- Faster development and deployment workflows
+- Useful for common automation tasks
+
+---
+
+BEST PRACTICES
+
+- Review scripts before execution
+- Customize per environment
+- Use templates as base, not final solution
+- Use AI generator when templates are insufficient
+
+---
+
+SUMMARY
+
+Script Templates enable users to:
+- quickly access reusable automation scripts
+- avoid writing scripts from scratch
+- standardize automation workflows
+- integrate scripts into deployment pipelines
+
+They act as reusable building blocks for automation within QuickInfra.

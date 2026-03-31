@@ -1,0 +1,125 @@
+TITLE: Chat (QuickInfra)
+
+CATEGORY: Users
+
+DESCRIPTION:
+Chat is a real-time broadcast communication channel available to all users in a QuickInfra organisation. It enables teams to coordinate infrastructure activities, share updates, and communicate directly within the platform.
+
+---
+
+WHAT IS CHAT?
+
+Chat is:
+- a team-wide broadcast channel
+- built directly into QuickInfra
+
+It allows users to:
+- send and receive messages in real time
+- communicate about infrastructure and deployments
+- coordinate team activities without leaving the platform
+
+---
+
+KEY CONCEPT
+
+- Chat is NOT private messaging
+- All messages are visible to all users
+- Acts as a shared operations channel
+
+---
+
+HOW CHAT WORKS
+
+- Navigate to Users → Chat
+- View full message history
+- Enter message in input field
+- Send message
+- Delivered instantly to all connected users
+
+Connection indicator:
+- "Connected" → real-time active
+- If disconnected → refresh page
+
+---
+
+KEY FEATURES
+
+- Real-time messaging
+- Organization-wide visibility
+- Instant message delivery
+- Persistent message history
+- Integrated within platform context
+
+---
+
+COMMON USE CASES
+
+1. Deployment Announcements
+- Notify team before production deployments
+
+2. Access Requests
+- Request permissions from admins
+
+3. Incident Alerts
+- Notify failures:
+  - pipeline issues
+  - server downtime
+  - unexpected changes
+
+4. Team Coordination
+- Coordinate tasks across team members
+
+---
+
+ACCESS RULES
+
+- All users can:
+  - send messages
+  - read messages
+- No role restrictions for chat usage
+
+---
+
+IMPORTANT NOTES
+
+- Chat is broadcast-only
+- No private or direct messaging
+- Messages are visible to entire organization
+
+---
+
+IMPORTANT WARNINGS
+
+- Avoid sharing sensitive information
+- Messages are visible to all users
+
+---
+
+KEY INSIGHTS
+
+- Chat improves operational coordination
+- Especially useful during:
+  - deployments
+  - incidents
+  - debugging sessions
+
+---
+
+BEST PRACTICES
+
+- Use for important updates only
+- Avoid spam or unnecessary messages
+- Clearly communicate deployment actions
+- Use for quick coordination, not long discussions
+
+---
+
+SUMMARY
+
+Chat enables users to:
+- communicate in real time
+- coordinate infrastructure operations
+- share updates across the organization
+- stay aligned during deployments and incidents
+
+It provides a built-in communication layer within QuickInfra.

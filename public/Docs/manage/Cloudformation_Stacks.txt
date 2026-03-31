@@ -1,0 +1,147 @@
+TITLE: CloudFormation Stacks (QuickInfra)
+
+CATEGORY: Manage
+
+DESCRIPTION:
+CloudFormation Stacks allows users to provision and manage AWS infrastructure using CloudFormation templates directly from QuickInfra. Users can deploy, update, and delete infrastructure stacks using pre-built templates, custom scripts, or AI-generated templates.
+
+---
+
+WHAT IS CLOUDFORMATION STACKS?
+
+CloudFormation is an Infrastructure-as-Code (IaC) service by AWS.
+
+A Stack:
+- is a collection of AWS resources
+- defined using YAML or JSON templates
+- managed as a single unit
+
+QuickInfra provides:
+- a UI to manage stacks
+- without needing AWS console
+
+---
+
+KEY CONCEPT
+
+- A stack = full infrastructure deployment
+- All resources in stack:
+  - created together
+  - updated together
+  - deleted together
+
+---
+
+WAYS TO USE TEMPLATES
+
+1. Pre-built Templates
+- Provided by QuickInfra
+- Covers common use cases:
+  - VPC
+  - EC2
+  - subnets
+  - security groups
+
+2. Custom Templates
+- Upload your own CloudFormation script
+- Or save in Custom Scripts section
+- Automatically available here
+
+3. AI Generator
+- Describe infrastructure in plain English
+- AI generates CloudFormation YAML
+- Editable before execution
+
+---
+
+HOW TO DEPLOY A STACK
+
+Step 1: Navigate
+- Go to Manage → CloudFormation Stacks
+
+Step 2: Select Environment
+- Choose:
+  - Cloud Account
+  - Region
+
+Step 3: Select Template
+- Choose from:
+  - pre-built templates
+  - custom scripts
+  - AI-generated templates
+
+Step 4: Review Template
+- Inspect YAML content
+- Update parameters:
+  - environment name
+  - CIDR blocks
+  - subnet ranges
+
+Step 5: Select Action
+- Create New → deploy new stack
+- Modify → update existing stack
+- Delete → remove stack and all resources
+
+Step 6: Execute
+- Submit action
+- Stack runs asynchronously
+
+---
+
+KEY FEATURES
+
+- Full CloudFormation stack management
+- Pre-built + custom + AI templates
+- Template editor with full visibility
+- Integration with Custom Scripts
+- No need for AWS console
+
+---
+
+IMPORTANT NOTES
+
+- Stack operations are asynchronous
+- Large stacks take time to complete
+- Failed stack creation:
+  - auto rollback occurs
+
+---
+
+IMPORTANT WARNINGS
+
+- Delete action removes ALL resources in stack
+- Includes:
+  - VPCs
+  - EC2 instances
+  - subnets
+- This action is irreversible
+
+---
+
+KEY INSIGHTS
+
+- Modify action performs differential update
+- Only changed resources are updated
+- Pre-built templates follow AWS best practices
+
+---
+
+BEST PRACTICES
+
+- Test in dev before production
+- Review templates carefully
+- Validate parameters before execution
+- Use AI-generated templates with caution
+- Reuse templates across environments
+
+---
+
+SUMMARY
+
+CloudFormation Stacks enables users to:
+- deploy infrastructure using AWS-native IaC
+- manage stacks without AWS console
+- reuse templates across environments
+- automate infrastructure lifecycle
+
+It provides an alternative to Terraform/OpenTofu within QuickInfra.

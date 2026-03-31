@@ -1,0 +1,140 @@
+TITLE: Additional Help (QuickInfra)
+
+CATEGORY: For You
+
+DESCRIPTION:
+Additional Help provides a direct communication channel to the QuickInfra support team for issues that do not fall under structured services or template requests. It is used for troubleshooting, bug reporting, and general assistance.
+
+---
+
+WHAT IS ADDITIONAL HELP?
+
+Additional Help is:
+- a direct support channel
+- used for open-ended issues
+
+It allows users to:
+- report bugs
+- troubleshoot errors
+- ask general questions
+- get help from QuickInfra team
+
+---
+
+KEY CONCEPT
+
+- Not all problems fit predefined categories
+- Additional Help handles:
+  - unexpected issues
+  - unclear problems
+  - platform-related errors
+
+---
+
+WHEN TO USE THIS
+
+1. Application Errors
+- Issues in deployed applications
+- Related to:
+  - infrastructure
+  - networking
+  - deployment setup
+
+---
+
+2. Platform Bugs
+- Unexpected behavior
+- Incorrect outputs
+- Broken features in QuickInfra
+
+---
+
+3. General Questions
+- Feature clarification
+- Use case support
+- “How to do X?” type queries
+
+---
+
+4. Business / Billing Queries
+- Subscription issues
+- Account-related questions
+
+---
+
+HOW IT WORKS
+
+Step 1: Navigate
+- Go to For You → Additional Help
+
+Step 2: Describe Issue
+- Provide:
+  - problem description
+  - error messages
+  - expected vs actual behavior
+
+Step 3: Submit Request
+- Sent to QuickInfra team
+
+Step 4: Response
+- Team reviews and responds
+- Works with user to resolve issue
+
+---
+
+KEY FEATURES
+
+- Direct human support
+- No strict categories
+- Handles all edge cases
+- Unlimited requests
+
+---
+
+IMPORTANT NOTES
+
+- No limit on number of requests
+- Works for any type of issue
+- Responses typically during business hours
+
+---
+
+IMPORTANT WARNINGS
+
+- Lack of detail may delay resolution
+- Always include:
+  - logs
+  - steps to reproduce
+  - environment details
+
+---
+
+KEY INSIGHTS
+
+- Acts as fallback when:
+  - templates are insufficient
+  - services are not required
+- Complements:
+  - Services (structured work)
+  - Free Infra Template (custom builds)
+
+---
+
+BEST PRACTICES
+
+- Be specific and detailed
+- Clearly explain issue
+- Include logs and context
+- Mark urgent production issues clearly
+
+---
+
+SUMMARY
+
+Additional Help enables users to:
+- resolve unexpected issues
+- report bugs and errors
+- get direct assistance from experts
+- handle edge cases beyond standard workflows
+
+It serves as the final support layer within QuickInfra.

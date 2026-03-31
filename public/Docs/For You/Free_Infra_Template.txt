@@ -1,0 +1,133 @@
+TITLE: Free Infra Template (QuickInfra)
+
+CATEGORY: For You
+
+DESCRIPTION:
+Free Infra Template allows users to request custom infrastructure, deployment, or script templates tailored to their specific requirements. The QuickInfra team builds and delivers these templates directly to the user’s account at no cost.
+
+---
+
+WHAT IS FREE INFRA TEMPLATE?
+
+Free Infra Template is:
+- a request-based service
+- used when existing templates do not meet requirements
+
+It allows users to:
+- request custom-built templates
+- receive ready-to-use infrastructure or deployment configurations
+
+---
+
+KEY CONCEPT
+
+- Not all use cases are covered by default templates
+- Users can request custom templates
+- QuickInfra team builds and delivers them
+
+Once delivered:
+- template appears in user’s template library
+- can be copied and used like any other template
+
+---
+
+WHAT YOU CAN REQUEST
+
+Users can request:
+
+1. Infrastructure Templates
+- custom VPC setups
+- multi-tier architectures
+- cloud-specific configurations
+
+2. Deployment Templates
+- custom app deployment workflows
+- CI/CD-specific setups
+
+3. Script Templates
+- automation workflows
+- configuration scripts
+- installation scripts
+
+---
+
+HOW IT WORKS
+
+Step 1: Navigate
+- Go to For You → Free Infra Template
+
+Step 2: Submit Request
+- Describe requirements clearly:
+  - cloud provider
+  - region
+  - architecture
+  - services needed
+
+Step 3: Processing
+- QuickInfra team reviews request
+- builds template
+
+Step 4: Delivery
+- Template added to your account
+- appears in Templates section
+
+Step 5: Use Template
+- Copy as project
+- Customize
+- Deploy
+
+---
+
+KEY FEATURES
+
+- Custom template generation
+- Supports infra, deployment, and scripts
+- Delivered directly to user account
+- No cost service
+- Unlimited requests
+
+---
+
+IMPORTANT NOTES
+
+- No limit on number of requests
+- Templates follow standard QuickInfra structure
+- Delivered templates are fully compatible with platform
+
+---
+
+IMPORTANT WARNINGS
+
+- Vague requests may lead to incorrect templates
+- Always provide detailed requirements
+
+---
+
+KEY INSIGHTS
+
+- Enables highly customized infrastructure
+- Eliminates need to build complex setups manually
+- Bridges gap between generic templates and real-world needs
+
+---
+
+BEST PRACTICES
+
+- Be very specific in requests:
+  - cloud provider
+  - region
+  - instance types
+  - architecture details
+- Review delivered templates before deployment
+- Use templates as starting point
+
+---
+
+SUMMARY
+
+Free Infra Template enables users to:
+- request custom-built infrastructure or deployment setups
+- receive ready-to-use templates
+- accelerate development with tailored solutions
+
+It provides a flexible, user-driven extension to the QuickInfra template system.

@@ -1,0 +1,103 @@
+TITLE: CI/CD Pipelines (QuickInfra)
+
+CATEGORY: Projects
+
+DESCRIPTION:
+CI/CD Pipelines is a centralized dashboard in QuickInfra for managing AWS-native continuous integration and delivery pipelines. It allows users to trigger pipeline runs, monitor execution history, investigate errors, and manage pipelines without using the AWS console.
+
+---
+
+WHAT IS CI/CD PIPELINES?
+
+The CI/CD Pipelines section displays all AWS CodePipeline pipelines that are provisioned through QuickInfra Infrastructure Projects.
+
+Users define and create pipelines using Infrastructure Projects (with AWS services like CodeCommit, CodeBuild, CodeDeploy, and CodePipeline). Once created, pipelines appear automatically in this dashboard for ongoing management.
+
+---
+
+INTENDED WORKFLOW
+
+- Pipelines are created in Infrastructure Projects using Terraform modules.
+- After provisioning, they are automatically visible in CI/CD Pipelines.
+- CI/CD Pipelines is only for management and monitoring, NOT creation.
+- This separation ensures:
+  - Infrastructure Projects → provisioning
+  - CI/CD Pipelines → operations and monitoring
+
+---
+
+KEY FEATURES
+
+1. Trigger Pipeline
+- Manually start a pipeline execution.
+- Useful for re-running deployments or hotfixes.
+
+2. View Execution History
+- See all past runs with:
+  - start time
+  - duration
+  - trigger source
+  - final status (Succeeded / Failed / Stopped)
+
+3. Investigate Errors
+- Drill into failed executions
+- Identify failing stage:
+  - source
+  - build
+  - deploy
+- View logs and error messages
+
+4. View All Pipelines
+- See all pipelines across connected AWS accounts
+- Includes status and last execution result
+
+---
+
+SUPPORTED SERVICES (AWS)
+
+QuickInfra CI/CD pipelines are built on:
+
+- AWS CodeCommit → source repository (triggers on code push)
+- AWS CodeBuild → builds and tests code
+- AWS CodeDeploy → deploys applications
+- AWS CodePipeline → orchestrates the workflow
+
+---
+
+IMPORTANT NOTES
+
+- Only pipelines created via QuickInfra Infrastructure Projects are visible.
+- Pipelines created directly in AWS console are NOT shown.
+- Manual triggers behave exactly like automatic triggers.
+- Execution history retention depends on AWS settings.
+
+---
+
+LIMITATIONS
+
+- Currently supports AWS CodePipeline only.
+- Support for:
+  - GitHub Actions
+  - GitLab CI
+  - Jenkins
+  will be added in future updates.
+
+---
+
+TROUBLESHOOTING TIP
+
+If a pipeline is missing:
+- Ensure it was created via QuickInfra Infrastructure Project
+- Ensure the AWS account is properly connected
+
+---
+
+SUMMARY
+
+CI/CD Pipelines provides a simplified, centralized way to:
+- monitor pipelines
+- trigger executions
+- debug failures
+- manage CI/CD workflows
+
+without leaving the QuickInfra platform.

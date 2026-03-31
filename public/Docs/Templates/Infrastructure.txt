@@ -1,0 +1,119 @@
+TITLE: Infrastructure Templates (QuickInfra)
+
+CATEGORY: Templates
+
+DESCRIPTION:
+Infrastructure Templates are pre-built, production-ready Infrastructure Projects created and maintained by QuickInfra. Users can browse templates, copy them into their account, customize configurations, and deploy infrastructure without building from scratch.
+
+---
+
+WHAT ARE INFRASTRUCTURE TEMPLATES?
+
+Infrastructure Templates are:
+- fully configured Infrastructure Projects
+- built using Terraform modules
+- tested in production environments
+
+They act as:
+- reusable blueprints for infrastructure
+
+---
+
+KEY CONCEPT
+
+- Templates = ready-made Infrastructure Projects
+- Cannot be modified directly
+- Must be copied into your account before use
+
+After copying:
+- becomes a normal Infrastructure Project
+- fully editable and deployable
+
+---
+
+WHAT TEMPLATES INCLUDE
+
+Templates may contain:
+- VPC setup
+- subnets (public/private)
+- EC2 instances
+- security groups
+- multi-AZ architecture
+- deployment-ready configurations
+
+---
+
+HOW TO USE TEMPLATES
+
+Step 1: Navigate
+- Go to Templates → Infrastructure
+
+Step 2: Browse Templates
+- View:
+  - purpose
+  - services included
+  - architecture pattern
+
+Step 3: Copy Template
+- Click "Copy as Project"
+- Creates a new Infrastructure Project
+
+Step 4: Customize
+- Update:
+  - environment variables
+  - CIDR blocks
+  - instance sizes
+  - region-specific configs
+
+Step 5: Deploy
+- Execute project
+- Infrastructure is provisioned
+
+---
+
+KEY FEATURES
+
+- Production-ready infrastructure setups
+- No need to build from scratch
+- Faster onboarding
+- Based on best practices
+- Reusable across environments
+
+---
+
+IMPORTANT NOTES
+
+- Templates are read-only
+- Updates to templates do NOT affect copied projects
+- Each copied project is independent
+
+---
+
+KEY INSIGHTS
+
+- Templates accelerate infrastructure setup
+- Useful for:
+  - beginners
+  - rapid prototyping
+  - standardized environments
+
+---
+
+BEST PRACTICES
+
+- Always review configuration before deployment
+- Customize templates per environment
+- Use templates as starting points, not final solutions
+- Reuse templates across dev/staging/prod
+
+---
+
+SUMMARY
+
+Infrastructure Templates enable users to:
+- quickly deploy standard infrastructure
+- reduce manual configuration effort
+- follow best practices by default
+- accelerate development and deployment workflows
+
+They act as reusable blueprints for building Infrastructure Projects efficiently.

@@ -1,0 +1,132 @@
+TITLE: Subnets (QuickInfra)
+
+CATEGORY: Manage
+
+DESCRIPTION:
+Subnets provides a detailed view of network segments within VPCs. Users can inspect subnet configurations, view CIDR ranges, availability zones, and list all virtual machines running inside each subnet.
+
+---
+
+WHAT ARE SUBNETS?
+
+A subnet is a subdivision of a Virtual Private Cloud (VPC).
+
+It defines:
+- a specific IP address range within a VPC
+- the network segment where resources are deployed
+
+Types:
+- Public subnet → accessible via internet gateway
+- Private subnet → internal-only (requires NAT for outbound access)
+
+---
+
+KEY CONCEPT
+
+- Subnets belong to a VPC
+- Each subnet is tied to a specific availability zone (AZ)
+- Resources are deployed inside subnets, not directly in VPCs
+
+---
+
+HOW TO VIEW SUBNETS
+
+Step 1: Navigate
+- Go to Manage → Subnets
+
+Step 2: Select Filters
+- Cloud Provider
+- Cloud Account
+- Region
+
+Step 3: Fetch Subnets
+- Click "Fetch Subnets"
+- Subnets are grouped under their parent VPC
+
+Step 4: Review Subnets
+Each subnet shows:
+- Subnet Name
+- Project Tag (if available)
+- CIDR Block
+- Available IPs
+- Availability Zone
+- State
+
+Step 5: View Instances
+- List all VM instances running inside a subnet
+
+---
+
+WHAT YOU CAN SEE
+
+1. Subnet Details
+- CIDR block (IP range)
+- availability zone
+- state (active/inactive)
+
+2. Capacity Information
+- Available IPs remaining
+- Helps in capacity planning
+
+3. Instance Mapping
+- All VMs inside the subnet
+- Shows deployment distribution
+
+---
+
+KEY FEATURES
+
+- Centralized subnet visibility
+- Grouped by VPC for clarity
+- Real-time data fetching
+- Integrated view of:
+  - network segments
+  - compute resources
+
+---
+
+IMPORTANT NOTES
+
+- Subnets are read-only in this section
+- Provisioning is done via Infrastructure Projects
+- Data is fetched live from cloud provider
+
+---
+
+KEY INSIGHTS
+
+- Each subnet is limited to one availability zone
+- Subnet with 0 available IPs cannot host new instances
+- CIDR size determines capacity (e.g., /20 → ~4091 usable IPs)
+- Subnets without tags are usually default or manually created
+
+---
+
+NETWORKING RULES
+
+- Public subnets:
+  - have route to internet gateway
+- Private subnets:
+  - require NAT gateway for outbound access
+
+---
+
+BEST PRACTICES
+
+- Create multiple subnets across availability zones
+- Use tagging for organization
+- Monitor available IPs to avoid exhaustion
+- Separate public and private workloads
+- Use subnet segmentation for security and scaling
+
+---
+
+SUMMARY
+
+Subnets enables users to:
+- understand network segmentation
+- monitor IP usage and capacity
+- map infrastructure to network zones
+- analyze deployment distribution
+
+It provides a detailed, granular view of how infrastructure is organized inside VPC networks.

@@ -1,0 +1,150 @@
+TITLE: Services (QuickInfra)
+
+CATEGORY: For You
+
+DESCRIPTION:
+Services provides access to professional, managed DevOps and cloud infrastructure services delivered by the QuickInfra engineering team. It is designed for organisations that need expert assistance beyond the self-service platform.
+
+---
+
+WHAT ARE SERVICES?
+
+Services is:
+- a professional support offering
+- delivered by QuickInfra engineers
+
+It allows users to:
+- request expert help
+- get hands-on implementation
+- solve complex infrastructure challenges
+
+---
+
+KEY CONCEPT
+
+- Some problems cannot be solved using templates alone
+- Services provides direct engineering support
+- Work is tailored to the user’s environment
+
+---
+
+WHAT SERVICES COVER
+
+1. Managed CI/CD
+- End-to-end pipeline setup
+- Includes:
+  - source integration
+  - build stages
+  - automated testing
+  - deployment pipelines
+
+---
+
+2. Kubernetes Setup
+- Production-grade cluster setup
+- Includes:
+  - networking
+  - ingress
+  - autoscaling
+  - RBAC
+  - monitoring
+
+---
+
+3. GitOps (ArgoCD)
+- Full GitOps workflow implementation
+- Features:
+  - declarative infrastructure
+  - automated sync
+  - drift detection
+
+---
+
+4. Advanced DevOps
+- Custom solutions such as:
+  - infrastructure architecture design
+  - observability setup
+  - secrets management
+  - performance optimization
+
+---
+
+HOW IT WORKS
+
+Step 1: Navigate
+- Go to For You → Services
+
+Step 2: Submit Request
+- Describe requirements:
+  - use case
+  - current setup
+  - desired outcome
+
+Step 3: Scoping
+- QuickInfra team evaluates request
+- Defines scope and solution
+
+Step 4: Execution
+- Engineers implement solution
+
+Step 5: Delivery
+- Work is integrated into your account:
+  - templates
+  - projects
+  - configurations
+
+---
+
+KEY FEATURES
+
+- Expert DevOps support
+- Custom architecture solutions
+- Fully managed implementations
+- Integration with platform
+- Tailored to user requirements
+
+---
+
+IMPORTANT NOTES
+
+- Services are engagement-based
+- Each request is scoped before execution
+- Delivered solutions are reusable inside QuickInfra
+
+---
+
+IMPORTANT WARNINGS
+
+- Lack of detail in request may delay execution
+- Always provide complete context
+
+---
+
+KEY INSIGHTS
+
+- Complements self-service platform
+- Ideal for:
+  - complex systems
+  - production environments
+  - teams lacking DevOps expertise
+
+---
+
+BEST PRACTICES
+
+- Clearly define requirements
+- Share architecture details
+- Collaborate with QuickInfra engineers
+- Review delivered solutions
+
+---
+
+SUMMARY
+
+Services enables users to:
+- get expert DevOps support
+- implement complex infrastructure
+- accelerate production readiness
+- extend platform capabilities
+
+It provides a professional services layer on top of QuickInfra.

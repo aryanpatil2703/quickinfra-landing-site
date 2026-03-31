@@ -1,0 +1,139 @@
+TITLE: Networks (QuickInfra)
+
+CATEGORY: Manage
+
+DESCRIPTION:
+Networks provides a centralized view of all Virtual Private Cloud (VPC) networks across cloud accounts. Users can inspect network configurations, view subnets, and explore all virtual machines running within each network.
+
+---
+
+WHAT IS NETWORKS?
+
+Networks is a visibility layer for cloud networking.
+
+It allows users to:
+- view all VPCs across accounts and regions
+- inspect network configuration
+- explore subnets and instances inside a VPC
+
+It acts as:
+- a read-only monitoring and exploration tool
+- NOT a provisioning system
+
+---
+
+KEY CONCEPT
+
+- Every cloud resource runs inside a VPC
+- Networks helps understand infrastructure topology
+- Does NOT create or modify networks
+
+Use Infrastructure Projects to:
+- create VPCs
+- configure networking
+
+---
+
+HOW TO VIEW NETWORKS
+
+Step 1: Navigate
+- Go to Manage → Networks
+
+Step 2: Select Filters
+- Cloud Provider
+- Cloud Account
+- Region
+- Optional: Project filter
+
+Step 3: Fetch Networks
+- Click "Fetch Networks"
+- QuickInfra retrieves VPCs in real time
+
+Step 4: Review Networks
+Each VPC displays:
+- VPC Name
+- VPC ID
+- CIDR Block
+- Default status
+- Tenancy
+- State
+
+Step 5: Drill Down
+- View detailed configuration
+- Explore subnets
+- View VM instances in that network
+
+---
+
+WHAT YOU CAN SEE
+
+1. Network Configuration
+- CIDR block
+- DNS settings
+- tenancy model
+- route tables
+- internet gateways
+
+2. Subnets
+- availability zones
+- CIDR ranges
+- public/private classification
+
+3. VM Instances
+- instances inside the VPC
+- instance type
+- IP addresses
+- state (running/stopped)
+
+---
+
+KEY FEATURES
+
+- Centralized VPC visibility
+- Multi-account and multi-region support
+- Real-time network data
+- Integrated view of:
+  - networks
+  - subnets
+  - compute resources
+
+---
+
+IMPORTANT NOTES
+
+- Networks is read-only
+- Does not provision or modify VPCs
+- Data is fetched live from cloud provider
+- Use Infrastructure Projects for network creation
+
+---
+
+KEY INSIGHTS
+
+- Default VPC exists in every region
+- Suitable for development but not recommended for production
+- CIDR block defines IP range and cannot be changed after creation
+- Empty VPC means:
+  - network exists
+  - no workloads deployed yet
+
+---
+
+BEST PRACTICES
+
+- Use custom VPCs for production
+- Organize workloads by network
+- Use subnet segmentation (public/private)
+- Analyze network before troubleshooting connectivity issues
+
+---
+
+SUMMARY
+
+Networks enables users to:
+- visualize cloud network topology
+- understand infrastructure organization
+- inspect VPCs, subnets, and instances
+- troubleshoot deployments and connectivity
+
+It provides a complete network-level view of infrastructure without requiring access to cloud consoles.

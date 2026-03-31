@@ -1,0 +1,196 @@
+TITLE: Deployment Projects (QuickInfra)
+
+CATEGORY: Projects
+
+DESCRIPTION:
+Deployment Projects in QuickInfra allow users to deploy applications, scripts, configuration files, and database operations to multiple servers simultaneously using Ansible. Users can connect directly or through a bastion host and monitor deployments in real time.
+
+---
+
+WHAT ARE DEPLOYMENT PROJECTS?
+
+A Deployment Project is a set of activities executed using Ansible on target servers.
+
+Each activity defines:
+- what to deploy
+- how it should be executed
+
+Supported deployments:
+- applications (Java, .NET, Python)
+- scripts (shell, PowerShell)
+- configuration files
+- database imports/exports
+
+Key capabilities:
+- reusable across environments
+- supports multiple servers
+- automated execution using Ansible
+
+---
+
+KEY CONCEPT
+
+Deployment Projects are reusable:
+
+- configure once
+- execute on:
+  - dev
+  - staging
+  - production
+
+No duplication needed — just change target hosts
+
+---
+
+WAYS TO CREATE A PROJECT
+
+1. From Scratch
+- Create empty project
+- Add activities manually
+- Full control over sequence
+
+2. Copy Existing Project
+- Clone an existing deployment
+- Duplicate all configurations
+- Useful for environment replication
+
+3. From Template
+- Use pre-configured templates
+- Quick setup for common patterns
+
+---
+
+CONNECTING TO SERVERS
+
+Two connection modes:
+
+1. Direct Connection
+- Connect via private IP
+- Used when servers are in same VPC/network
+
+2. Bastion Host (Jump Server)
+- Connect via public IP of bastion
+- Access private servers through it
+- Standard for production environments
+
+---
+
+MULTI-SERVER EXECUTION
+
+- Select multiple target hosts
+- Ansible executes across all servers in parallel
+- Same deployment runs on all selected machines
+
+---
+
+SUPPORTED ACTIVITY TYPES
+
+LINUX
+
+- Configuration File Copy → deploy config files
+- Archive Copy → deploy .zip, .tar, .tar.gz, .tar.bz2
+- Custom Application → deploy Java/.NET/Python apps
+- Shell Script → run Linux scripts
+- Custom Install Script → run predefined install scripts
+- Ansible Playbook → execute full playbooks
+
+WINDOWS
+
+- Configuration File Copy
+- Archive Copy
+- Custom Application
+- PowerShell Script
+- Custom Install Script
+- Chocolatey Installer → install packages
+- Windows Installer → run .msi/.exe
+- IIS Website → deploy web apps
+
+DATABASE (IMPORT)
+
+- MySQL, PostgreSQL, Oracle, MS-SQL
+- AWS RDS equivalents supported
+
+DATABASE (EXPORT)
+
+- MySQL, PostgreSQL, Oracle, MS-SQL
+- AWS RDS equivalents supported
+
+---
+
+HOW DEPLOYMENT WORKS
+
+Step 1: Open Project
+- Navigate to Projects → Deployment
+- Open desired project
+
+Step 2: Select Target Hosts
+- Choose servers by private IP
+- Optionally select bastion host
+
+Step 3: Select Activity
+- Choose deployment activity
+- Click Execute
+
+Step 4: Execution
+QuickInfra automatically:
+- generates Ansible playbook
+- creates inventory file
+- configures SSH key access
+- executes deployment
+
+Step 5: Monitor Output
+- Live streaming of execution logs
+- Includes:
+  - playbook generation
+  - inventory creation
+  - deployment steps
+- Success indicator confirms completion
+
+---
+
+KEY FEATURES
+
+- No manual Ansible setup required
+- Automatic playbook generation
+- Parallel execution across servers
+- Real-time output streaming
+- Multi-environment reuse
+- Supports Linux, Windows, and databases
+
+---
+
+IMPORTANT NOTES
+
+- Activities execute in configured order
+- Useful for sequencing:
+  - stop service → deploy → restart
+
+- Key pairs auto-detected from Infrastructure Projects
+- No manual key configuration needed
+
+- Terminal output persists until next execution
+
+- Database operations support:
+  - self-hosted DBs
+  - AWS RDS
+
+---
+
+BEST PRACTICES
+
+- Test deployment in dev before production
+- Use bastion host for secure production setups
+- Reuse projects across environments
+- Sequence activities properly
+
+---
+
+SUMMARY
+
+Deployment Projects enable users to:
+- automate application deployment
+- execute scripts and configs across servers
+- manage multi-server deployments
+- reuse deployment logic across environments
+
+All powered by Ansible with no manual setup required.

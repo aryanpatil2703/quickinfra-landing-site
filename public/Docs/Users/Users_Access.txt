@@ -1,0 +1,127 @@
+TITLE: User Access (QuickInfra)
+
+CATEGORY: Users
+
+DESCRIPTION:
+User Access allows admin users to define exactly which resources each non-admin user can see and interact with. It provides fine-grained control over infrastructure projects, deployment projects, cloud accounts, and other platform resources.
+
+---
+
+WHAT IS USER ACCESS?
+
+User Access is:
+- a granular permission system
+- used alongside user roles
+
+It controls:
+- which specific resources a user can access
+
+---
+
+KEY CONCEPT
+
+QuickInfra uses a two-layer access model:
+
+1. Role → defines what actions a user can perform
+2. Access → defines which resources the user can interact with
+
+Example:
+- A user with Editor role but no access:
+  → cannot see any projects
+
+- A user with access only to dev account:
+  → cannot interact with production resources
+
+---
+
+WHAT YOU CAN CONTROL
+
+1. Infrastructure Projects
+- Define which infra projects a user can access
+- Hidden if no access is granted
+
+2. Deployment Projects
+- Control which deployments a user can execute
+- Useful for restricting production deployments
+
+3. Cloud Accounts
+- Limit access to specific environments:
+  - dev
+  - staging
+  - production
+
+4. Other Resources
+- Control access to:
+  - VM Instances
+  - Disk Volumes
+  - Networks
+  - other management sections
+
+---
+
+ACCESS BEHAVIOR
+
+- Access is NOT granted by default
+- Users only see explicitly assigned resources
+- Removing access hides resources immediately
+
+---
+
+ADMIN BEHAVIOR
+
+- Admin users:
+  - always have full access
+  - ignore User Access restrictions
+
+---
+
+KEY FEATURES
+
+- Fine-grained access control
+- Works with RBAC (role-based access control)
+- Resource-level permissions
+- Immediate effect of changes
+
+---
+
+IMPORTANT NOTES
+
+- Access changes apply instantly
+- No re-login required
+- Works in combination with roles (not a replacement)
+
+---
+
+IMPORTANT WARNINGS
+
+- Incorrect access setup can:
+  - block users completely
+  - expose sensitive resources
+
+---
+
+KEY INSIGHTS
+
+- Role + Access together define effective permissions
+- Use both for secure setups
+
+---
+
+BEST PRACTICES
+
+- Follow least-privilege principle
+- Restrict production access to senior users
+- Give developers access only to dev/staging
+- Regularly audit access permissions
+
+---
+
+SUMMARY
+
+User Access enables admins to:
+- control visibility of resources
+- restrict operations to specific environments
+- enforce security boundaries
+- manage team-level access precisely
+
+It provides fine-grained permission control on top of role-based access.

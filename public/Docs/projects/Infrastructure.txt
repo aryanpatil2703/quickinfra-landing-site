@@ -1,0 +1,213 @@
+TITLE: Infrastructure Projects (QuickInfra)
+
+CATEGORY: Projects
+
+DESCRIPTION:
+Infrastructure Projects in QuickInfra allow users to provision real cloud infrastructure using Terraform (OpenTofu) and Ansible. Users can compose infrastructure using modular services such as VPC, security groups, EC2 instances, and more, and execute deployments directly to their cloud accounts with real-time output streaming.
+
+---
+
+WHAT ARE INFRASTRUCTURE PROJECTS?
+
+An Infrastructure Project is a collection of cloud services that together define a complete environment.
+
+- Each service corresponds to a Terraform module
+- Examples:
+  - VPC
+  - Security Group
+  - Key Pair
+  - EC2 instance
+
+Users:
+- configure services inside a project
+- execute the project
+- provision real infrastructure in their cloud account
+
+QuickInfra handles:
+- Terraform execution (no CLI needed)
+- live output streaming
+- dependency management
+
+Ansible can be used for:
+- post-provisioning configuration
+- software installation
+- system setup
+
+---
+
+TECHNOLOGY USED
+
+- Execution engine: OpenTofu (open-source Terraform fork)
+- Supports:
+  - standard Terraform syntax
+  - all providers
+
+---
+
+WAYS TO CREATE A PROJECT
+
+1. From Scratch
+- Create a blank project
+- Manually add and configure services
+- Best for full control
+
+2. Copy Existing Project
+- Clone an existing project (including production)
+- Duplicate all configurations instantly
+- Useful for staging/dev environments
+
+3. From Template
+- Use pre-configured infrastructure templates
+- Quick setup with minimal changes required
+
+---
+
+KEY CONCEPT
+
+Projects are reusable across environments:
+
+- Create once
+- Deploy to:
+  - dev
+  - staging
+  - production
+
+No reconfiguration required — just switch cloud accounts
+
+---
+
+HOW TO SET UP AND EXECUTE
+
+Step 1: Create Project
+- Navigate to Projects → Infrastructure
+- Click "New Project"
+- Choose:
+  - scratch / copy / template
+- Select region and cloud provider
+
+Step 2: Add Services
+- Click "Add Service"
+- Choose service type:
+  - VPC
+  - Security Group
+  - EC2
+  - KeyPair
+- Configure module parameters
+
+Step 3: Build Stack
+- Add all required services
+- Follow dependency order:
+  - VPC → Security → KeyPair → Compute
+- QuickInfra manages dependencies automatically
+
+Step 4: Select Cloud Account and Action
+- Choose cloud account
+- Select Terraform action:
+  - Plan
+  - Apply
+  - Destroy
+
+Step 5: Execute
+- Click Execute
+- View real-time output
+- Switch between:
+  - Terraform logs
+  - Ansible logs
+
+---
+
+TERRAFORM ACTIONS
+
+1. Generate Terraform
+- Creates Terraform config files
+- No infrastructure created
+
+2. View Terraform Plan
+- Preview changes
+- Safe (read-only)
+- Recommended before apply
+
+3. Create Infrastructure
+- Applies config
+- Provisions resources:
+  - VPC
+  - EC2
+  - Security Groups
+
+4. Plan and Create
+- Runs plan + apply together
+
+5. Remove Infrastructure
+- Destroys all resources
+- Permanent deletion
+
+6. Infrastructure Pricing
+- Estimates cost before deployment
+- Provides cost breakdown
+
+7. Infrastructure Diff
+- Detects drift between:
+  - state file
+  - actual cloud resources
+
+8. Update Modules
+- Fetch latest Terraform modules
+
+9. Upgrade Terraform
+- Updates OpenTofu providers
+
+---
+
+SERVICE ACTIONS
+
+Each service supports:
+
+- Clone → duplicate service config
+- View/Edit → modify parameters
+- Delete → remove from project (does NOT destroy infra)
+
+---
+
+IMPORTANT WARNINGS
+
+- "Remove Infrastructure" deletes ALL resources permanently
+- Includes:
+  - VPCs
+  - EC2 instances
+  - security groups
+
+Use carefully in production
+
+---
+
+KEY FEATURES
+
+- No Terraform CLI required
+- Live execution output streaming
+- Automatic dependency handling
+- Multi-environment deployment
+- Built-in cost estimation
+- Drift detection
+- Module version management
+
+---
+
+KEY NOTES
+
+- Terraform state is fully managed by QuickInfra
+- No need for remote backend setup
+- Terminal output can be accessed anytime
+- Ansible runs AFTER Terraform execution
+- Each project is region-specific
+
+---
+
+SUMMARY
+
+Infrastructure Projects enable users to:
+- design infrastructure using modular services
+- deploy using Terraform (OpenTofu)
+- manage environments consistently
+- automate provisioning and configuration
+
+All from a single platform without needing direct cloud CLI access.

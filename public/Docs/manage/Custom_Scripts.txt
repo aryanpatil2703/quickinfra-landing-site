@@ -1,0 +1,166 @@
+TITLE: Custom Scripts (QuickInfra)
+
+CATEGORY: Manage
+
+DESCRIPTION:
+Custom Scripts in QuickInfra provide a centralized library of reusable automation scripts that can be executed on servers via Deployment Projects. Scripts can be written manually or generated using an AI assistant.
+
+---
+
+WHAT ARE CUSTOM SCRIPTS?
+
+Custom Scripts are reusable automation scripts stored within QuickInfra.
+
+They are used for:
+- server configuration
+- software installation
+- cleanup tasks
+- health checks
+- automation workflows
+
+They eliminate the need to:
+- manually SSH into servers
+- maintain separate script repositories
+
+---
+
+SUPPORTED SCRIPT TYPES
+
+QuickInfra supports multiple script types:
+
+- Linux Shell → server configuration and automation
+- Ansible → orchestration and configuration management
+- CloudFormation → AWS infrastructure automation
+- PowerShell → Windows server automation
+- Terraform → infrastructure provisioning
+
+---
+
+KEY CONCEPT
+
+- Scripts are reusable across deployment projects
+- Updating a script updates all projects using it
+- Scripts are executed through Deployment Projects (not directly)
+
+---
+
+WAYS TO CREATE A SCRIPT
+
+1. Manual Entry
+2. AI Generator
+
+---
+
+MANUAL ENTRY WORKFLOW
+
+Step 1: Open Scripts
+- Navigate to Manage → Custom Scripts
+- Click "New"
+
+Step 2: Basic Information
+- Script Name (clear and descriptive)
+- Script Type (Shell, Ansible, Terraform, etc.)
+- Status = Active
+- Description
+- Tags (e.g., aws, ubuntu, nginx)
+
+Step 3: Write Script
+- Enter script in editor
+- Supports full syntax
+- Optional: define script parameters
+
+Step 4: Save
+- Script becomes available in deployment projects
+
+---
+
+AI GENERATOR
+
+The AI Generator creates scripts from natural language input.
+
+Capabilities:
+- generate scripts quickly
+- reduce need for manual scripting
+- assist with complex syntax
+
+Example prompt:
+"Install Nginx on Ubuntu 22.04, enable it on startup, and open port 80"
+
+---
+
+AI GENERATOR WORKFLOW
+
+Step 1: Enable AI Mode
+- Switch to AI Generator tab
+
+Step 2: Select Model
+- Default: Claude 3.7 Sonnet (recommended)
+
+Step 3: Enter Prompt
+- Describe script in plain English
+- More detail = better output
+
+Step 4: Generate Script
+- Click Execute AI
+- Script streams into editor
+- Review and edit before saving
+
+---
+
+IMPORTANT WARNINGS
+
+- Always review AI-generated scripts before execution
+- AI output may not be production-safe
+- Final responsibility lies with user
+
+---
+
+KEY FEATURES
+
+- Centralized script library
+- Reusable across projects
+- AI-assisted script generation
+- Supports multiple scripting technologies
+- Tag-based organization
+- Parameterized scripts
+
+---
+
+MANAGING SCRIPTS
+
+- View existing scripts
+- Edit and update scripts
+- Search using tags and filters
+- Inactive scripts are hidden from deployments
+
+---
+
+IMPORTANT NOTES
+
+- Scripts execute via Deployment Projects only
+- Cannot run scripts directly from this section
+- Script parameters allow dynamic input at runtime
+- Deleting a script used in a deployment will break that deployment
+- Use deactivate instead of delete
+
+---
+
+BEST PRACTICES
+
+- Use descriptive script names
+- Add tags for easy discovery
+- Test scripts before production use
+- Use AI generator for speed, but verify output
+- Reuse scripts instead of duplicating logic
+
+---
+
+SUMMARY
+
+Custom Scripts enable users to:
+- automate server operations
+- standardize deployment workflows
+- reuse automation logic
+- generate scripts using AI
+
+They act as a shared automation library integrated with Deployment Projects.
