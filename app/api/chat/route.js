@@ -27,57 +27,38 @@ export async function POST(req) {
 
     const latestMessage = messages[messages.length - 1];
 
-    if (latestMessage.role !== 'user') {
+    // 1. Truncate history to save tokens (last 4 messages)
+    const historyLimit = 4;
+    const truncatedMessages = messages.slice(-historyLimit);
+    const latestMsg = truncatedMessages[truncatedMessages.length - 1];
+
+    if (latestMsg.role !== 'user') {
       return NextResponse.json({ error: 'Latest message must be a user message' }, { status: 400 });
     }
 
-    const userQuery = latestMessage.content;
-    const relevantChunks = await getRelevantContext(userQuery, 3);
+    const relevantChunks = await getRelevantContext(latestMsg.content, 2);
+    const contextText = relevantChunks.map(c => `[KNOWLEDGE]: ${c.text}`).join('\n\n');
 
-    const contextText = relevantChunks.length > 0
-      ? relevantChunks.map(c => `[Source: ${c.source}]\n${c.text}`).join('\n\n')
-      : 'No specific context found in QuickInfra documentation for this query.';
+    // 3. Conditional QuickLinks (Inject only if needed)
+    const userQuery = latestMsg.content.toLowerCase();
+    const needsNav = /how|where|find|page|pricing|contact|link|help|guide/.test(userQuery) || relevantChunks.length === 0;
+    const quickLinks = needsNav ? `
+QuickLinks: [Home](/), [Infra](/infrastructure), [CI/CD](/ci-cd), [Security](/security), [Pricing](/pricing), [Blogs](/blogs), [Whitepapers](/whitepaper), [Contact](/contact).` : '';
 
-    const systemPrompt = `You are the QuickInfra Cloud Assistant on the QuickInfra website.
+    // 4. Expert System Prompt (Quality Balanced)
+    const systemPrompt = `You are the Expert QuickInfra AI. Answer technical queries with precision.
 
-You have access to three knowledge sources:
-1. Official platform documentation (features, workflows, and capabilities)
-2. Technical whitepapers
-3. Blog posts with best practices and guides
+Retrieved Knowledge:
+${contextText}
 
 Rules:
-- Answer ONLY using the provided QuickInfra context.
-- If the question is unrelated to QuickInfra Cloud, say you can only help with QuickInfra-related questions.
-- Do not invent features, pricing, integrations, or capabilities.
-- Keep answers concise, helpful, and accurate.
-- If the retrieved context is insufficient, acknowledge that you don't have enough details and direct the user to the most relevant page from the list below.
-- When linking pages, use markdown links like [Page Name](/path).
+- Use ONLY the provided knowledge. 
+- Never truncate technical terms (e.g., ALWAYS use "OpenTofu", "Terraform").
+- Be professional and technically detailed. 
+- Format the responses in a presentable and well mannered way.
+- 5-8 sentences max. ${quickLinks}`;
 
-Available Pages on QuickInfra Website:
-- [Home](/) — Platform overview, key features, and stats
-- [Infrastructure Automation](/infrastructure) — Auto provisioning, Terraform, IaC
-- [CI/CD Pipelines](/ci-cd) — One-click CI/CD setup
-- [Security & Compliance](/security) — SOC2, HIPAA, PCI-DSS, DevSecOps
-- [Cloud Migration](/cloud-migration) — Template-based migration
-- [InfraOps Monitoring](/monitoring) — Real-time observability, cost alerts
-- [AI/ML Infrastructure](/ai-ml) — AI workload infrastructure
-- [Platform Overview](/platform) — Full platform capabilities
-- [For Startups](/startups-and-founders) — Startup-specific solutions
-- [For Engineering Teams](/engineering-teams) — Developer productivity
-- [For Non-Tech SMEs](/non-tech-smes) — Managed cloud solutions
-- [Pricing](/pricing) — Plans and pricing
-- [AWS Partnership](/aws-partner) — AWS Select Partner details
-- [About Us](/about) — Company information
-- [Blogs](/blogs) — Technical articles and guides
-- [Whitepapers](/whitepaper) — Downloadable research reports
-- [Contact Us](/contact) — Get in touch, request demo
-- [Careers](/careers) — Job openings
-- [QuickInfra Console](https://console.quickinfra.cloud/) — Login to platform
-
-Retrieved Context:
-${contextText}`;
-
-    const filteredMessages = messages.filter(m => m.role !== 'system');
+    const filteredMessages = truncatedMessages.filter(m => m.role !== 'system');
 
     // ── Route to the correct provider ──────────────────────────────
     if (AI_PROVIDER === 'gemini') {
@@ -105,6 +86,9 @@ async function handleOllama(systemPrompt, filteredMessages) {
     model: OLLAMA_MODEL,
     messages: [{ role: 'system', content: systemPrompt }, ...filteredMessages],
     stream: true,
+    options: {
+      num_predict: 150
+    }
   };
 
   const response = await fetch(`${OLLAMA_BASE_URL}/api/chat`, {
@@ -152,6 +136,7 @@ async function handleGemini(systemPrompt, filteredMessages) {
   const payload = {
     system_instruction: { parts: [{ text: systemPrompt }] },
     contents: geminiContents,
+    generationConfig: { maxOutputTokens: 300 }
   };
 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:streamGenerateContent?alt=sse&key=${GEMINI_API_KEY}`;
@@ -221,6 +206,7 @@ async function handleGroq(systemPrompt, filteredMessages) {
     model: GROQ_MODEL,
     messages: [{ role: 'system', content: systemPrompt }, ...filteredMessages],
     stream: true,
+    max_tokens: 300,
   };
 
   const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {

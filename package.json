@@ -10,8 +10,12 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@pinecone-database/pinecone": "^7.1.0",
+    "dotenv": "^17.4.0",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
+    "node-fetch": "^3.3.2",
     "package.json": "^2.0.1",
     "pdfjs-dist": "^5.5.207",
     "react": "19.2.3",
