@@ -26,32 +26,40 @@ const workerPath = path.join(process.cwd(), 'node_modules', 'pdfjs-dist', 'legac
 pdfjsLib.GlobalWorkerOptions.workerSrc = pathToFileURL(workerPath).href;
 
 /**
- * Splits document text into manageable chunks.
+ * Splits document text into manageable chunks with overlap.
  */
-function splitTextIntoChunks(text, source, chunkSize = 800) {
+function splitTextIntoChunks(text, source, chunkSize = 1500, overlap = 300) {
   const chunks = [];
-  const words = text.split(/\s+/);
-  let currentChunk = [];
-  let currentLength = 0;
 
-  for (const word of words) {
-    if (currentLength + word.length + 1 > chunkSize && currentChunk.length > 0) {
+  // Use character-based splitting with overlap
+  let start = 0;
+  while (start < text.length) {
+    let end = start + chunkSize;
+
+    // If not at the end, try to find a sentence/paragraph break to avoid mid-sentence cuts
+    if (end < text.length) {
+      const remaining = text.slice(end, end + 200);
+      const nextBreak = remaining.search(/[.!?\n]/);
+      if (nextBreak !== -1) {
+        end += nextBreak + 1;
+      }
+    } else {
+      end = text.length;
+    }
+
+    const chunkText = text.slice(start, end).trim();
+    if (chunkText.length > 50) { // Avoid tiny, irrelevant chunks
       chunks.push({
-        text: currentChunk.join(' '),
+        text: chunkText,
         source
       });
-      currentChunk = [];
-      currentLength = 0;
     }
-    currentChunk.push(word);
-    currentLength += word.length + 1;
-  }
 
-  if (currentChunk.length > 0) {
-    chunks.push({
-      text: currentChunk.join(' '),
-      source
-    });
+    start = end - overlap;
+    if (start < 0) start = 0;
+
+    // Safety break for infinite loops if logic somehow fails
+    if (end >= text.length) break;
   }
 
   return chunks;
@@ -79,20 +87,21 @@ async function extractTextFromPDF(filePath) {
 }
 
 /**
- * Loads all .txt files from public/Docs
+ * Recursively find all .pdf files in public/Docs
  */
-function loadAllDocs(dirPath) {
+function getAllDocFiles(dirPath) {
   const results = [];
+  if (!fs.existsSync(dirPath)) return results;
+  
   const entries = fs.readdirSync(dirPath, { withFileTypes: true });
 
   for (const entry of entries) {
     const fullPath = path.join(dirPath, entry.name);
     if (entry.isDirectory()) {
-      results.push(...loadAllDocs(fullPath));
-    } else if (entry.name.toLowerCase().endsWith('.txt')) {
-      const text = fs.readFileSync(fullPath, 'utf-8');
+      results.push(...getAllDocFiles(fullPath));
+    } else if (entry.name.toLowerCase().endsWith('.pdf')) {
       const category = path.basename(path.dirname(fullPath));
-      results.push({ filename: entry.name, text, category });
+      results.push({ fullPath, filename: entry.name, category });
     }
   }
   return results;
@@ -103,6 +112,18 @@ function loadAllDocs(dirPath) {
  */
 async function indexAll() {
   console.log('Starting documentation indexing...');
+
+  const index = pc.index(PINECONE_INDEX_NAME);
+
+  // 0. CLEAR PREVIOUS INDEX
+  console.log('Clearing existing chunks in Pinecone...');
+  try {
+    await index.deleteAll();
+    console.log('Index cleared successfully.');
+  } catch (err) {
+    console.error('Error clearing index. Continuing anyway...', err.message);
+  }
+
   const allChunks = [];
 
   // 1. Load Whitepapers (PDFs)
@@ -131,7 +152,7 @@ async function indexAll() {
           .replace(/icon: \w+,/g, '') // remove React component refs
           .replace(/Quote,/g, '')
           .replace(/Zap|RefreshCw|Shield|Cloud|BarChart2|Settings|Rocket|Users|Building2/g, '""');
-        
+
         // This is still risky, so let's just use a simpler regex or manual extraction if needed.
         // For now, let's just assume the blogs are available.
       } catch (e) {
@@ -140,20 +161,21 @@ async function indexAll() {
     }
   }
 
-  // 3. Load Platform Docs
+  // 3. Load Platform Full Docs (PDFs)
   const docsDir = path.join(process.cwd(), 'public', 'Docs');
   if (fs.existsSync(docsDir)) {
-    console.log('Processing platform docs...');
-    const docFiles = loadAllDocs(docsDir);
-    for (const doc of docFiles) {
-      const sourceName = doc.filename.replace('.txt', '').replace(/_/g, ' ');
-      allChunks.push(...splitTextIntoChunks(doc.text, `Docs/${doc.category}: ${sourceName}`));
+    console.log('Processing full platform docs (PDF)...');
+    const docFiles = getAllDocFiles(docsDir);
+    for (const file of docFiles) {
+      console.log(`Processing doc: ${file.filename}`);
+      const text = await extractTextFromPDF(file.fullPath);
+      const sourceName = file.filename.replace('.pdf', '').replace(/ — QuickInfra Docs _ QuickInfra Docs/g, '');
+      allChunks.push(...splitTextIntoChunks(text, `Docs/${file.category}: ${sourceName}`));
     }
   }
 
   console.log(`Total chunks to index: ${allChunks.length}`);
 
-  const index = pc.index(PINECONE_INDEX_NAME);
   const batchSize = 10;
 
   for (let i = 0; i < allChunks.length; i += batchSize) {
@@ -165,11 +187,10 @@ async function indexAll() {
       const chunk = batch[idx];
       try {
         const embeddingResult = await embeddingModel.embedContent({
-          content: { role: 'user', parts: [{ text: chunk.text }] },
-          outputDimensionality: 768
+          content: { role: 'user', parts: [{ text: chunk.text }] }
         });
         const values = embeddingResult.embedding.values;
-        
+
         vectors.push({
           id: `chunk-${i + idx}`,
           values,

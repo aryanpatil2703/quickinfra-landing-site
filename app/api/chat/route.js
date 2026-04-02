@@ -15,7 +15,7 @@ const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
 
 // Groq config
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
-const GROQ_MODEL = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
+const GROQ_MODEL = process.env.GROQ_MODEL || 'llama-3.1-8b-instant';
 
 export async function POST(req) {
   try {
@@ -37,7 +37,7 @@ export async function POST(req) {
     }
 
     const relevantChunks = await getRelevantContext(latestMsg.content, 2);
-    const contextText = relevantChunks.map(c => `[KNOWLEDGE]: ${c.text}`).join('\n\n');
+    const contextText = relevantChunks.map(c => `[SOURCE: ${c.source}]\n${c.text}`).join('\n\n---\n\n');
 
     // 3. Conditional QuickLinks (Inject only if needed)
     const userQuery = latestMsg.content.toLowerCase();
@@ -45,18 +45,22 @@ export async function POST(req) {
     const quickLinks = needsNav ? `
 QuickLinks: [Home](/), [Infra](/infrastructure), [CI/CD](/ci-cd), [Security](/security), [Pricing](/pricing), [Blogs](/blogs), [Whitepapers](/whitepaper), [Contact](/contact).` : '';
 
-    // 4. Expert System Prompt (Quality Balanced)
-    const systemPrompt = `You are the Expert QuickInfra AI. Answer technical queries with precision.
+    // 4. Expert System Prompt (Strict Accuracy)
+    const systemPrompt = `You are the Official QuickInfra Expert Assistant. Your goal is 100% technical accuracy based ONLY on the provided documentation.
 
-Retrieved Knowledge:
+KNOWLEDGE BASE:
 ${contextText}
 
-Rules:
-- Use ONLY the provided knowledge. 
-- Never truncate technical terms (e.g., ALWAYS use "OpenTofu", "Terraform").
-- Be professional and technically detailed. 
-- Format the responses in a presentable and well mannered way.
-- 5-8 sentences max. ${quickLinks}`;
+STRICT OPERATING RULES:
+1. ONLY USE THE PROVIDED KNOWLEDGE. If the information is not in the "KNOWLEDGE BASE" above, say: "I'm sorry, I don't have specific information in our documentation regarding that. Please contact support."
+2. NEVER HALLUCINATE. Do not invent service names or features. (e.g., Use "AWS CodeCommit", never "AWSCommit").
+3. USE VERBATIM TERMINOLOGY. Always use "OpenTofu", "Terraform", and specific AWS service names as written.
+4. Format the responses in a presentable and well mannered way. (e.g., Use bullet points, bold text, etc.)
+5. CITATION: When possible, mention the source of the information (e.g., "According to our Whitepapers...").
+6. TONE: Professional, technical, and concise. 
+7. LENGTH: 4-8 sentences.
+8. NO TYPOS OR FORMATTING ERRORS. Ensure the response is polished, grammatically correct, and visually perfect.
+${quickLinks}`;
 
     const filteredMessages = truncatedMessages.filter(m => m.role !== 'system');
 
